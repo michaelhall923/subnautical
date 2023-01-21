@@ -13,7 +13,7 @@ import { db } from "../db";
 import { MetadataCache } from "../db/User";
 
 const UserItem = (metadata: MetadataCache) => {
-  const { pubkey, display_name, picture, nip05, ...rest } = metadata
+  const { pubkey, display_name, picture, nip05, ...rest } = metadata;
   return (
     <div key={pubkey} className="user-item">
       <div className="user-picture">
@@ -24,32 +24,41 @@ const UserItem = (metadata: MetadataCache) => {
         <Nip05 nip05={nip05} pubkey={pubkey} />
       </div>
     </div>
-  )
-}
+  );
+};
 
-const Textarea = ({ users, onChange, ...rest }: any) => {
-  const [query, setQuery] = useState('')
+const Textarea = ({
+  users,
+  onChange,
+  placeholder = "say something!",
+  ...rest
+}: any) => {
+  const [query, setQuery] = useState("");
 
   const allUsers = useLiveQuery(
-    () => db.users
-          .where("name").startsWithIgnoreCase(query)
-          .or("display_name").startsWithIgnoreCase(query)
-          .or("nip05").startsWithIgnoreCase(query)
-          .limit(5)
-          .toArray(),
-    [query],
+    () =>
+      db.users
+        .where("name")
+        .startsWithIgnoreCase(query)
+        .or("display_name")
+        .startsWithIgnoreCase(query)
+        .or("nip05")
+        .startsWithIgnoreCase(query)
+        .limit(5)
+        .toArray(),
+    [query]
   );
 
   const userDataProvider = (token: string) => {
-    setQuery(token)
-    return allUsers
-  }
+    setQuery(token);
+    return allUsers;
+  };
 
   return (
     <ReactTextareaAutocomplete
       {...rest}
       loadingComponent={() => <span>Loading....</span>}
-      placeholder="Say something!"
+      placeholder={placeholder}
       onChange={onChange}
       textAreaComponent={TextareaAutosize}
       trigger={{
@@ -57,11 +66,11 @@ const Textarea = ({ users, onChange, ...rest }: any) => {
           afterWhitespace: true,
           dataProvider: userDataProvider,
           component: (props: any) => <UserItem {...props.entity} />,
-          output: (item: any) => `@${hexToBech32("npub", item.pubkey)}`
-        }
+          output: (item: any) => `@${hexToBech32("npub", item.pubkey)}`,
+        },
       }}
     />
-  )
-}
+  );
+};
 
-export default Textarea
+export default Textarea;

@@ -1,44 +1,54 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
 
 :root {
-    --font-color: #FFF;
-    --bg-color: #000;
-    --modal-bg-color: rgba(0,0,0, 0.8);
-    --gray-superlight: #EEE;
-    --gray-light: #999;
-    --gray-medium: #666;
-    --gray: #333;
-    --gray-secondary: #222;
-    --gray-tertiary: #444;
-    --highlight-light: #E8FF52;
-    --highlight: #CCFF00;
-    --highlight-dark: #709900;
-    --error: #FF6053;
-    --success: #2AD544;
-    --gray-gradient: linear-gradient(to bottom right, var(--gray-superlight), var(--gray), var(--gray-light));
-    --snort-gradient: linear-gradient(to bottom right, var(--highlight-light), var(--highlight), var(--highlight-dark));
-    --nostrplebs-gradient: linear-gradient(to bottom right, #ff3cac, #2b86c5);
+  --font-color: #fff;
+  --bg-color: rgb(26, 26, 26);
+  --modal-bg-color: rgba(0, 0, 0, 0.8);
+  --gray-superlight: #eee;
+  --gray-light: #999;
+  --gray-medium: #666;
+  --gray: #333;
+  --gray-secondary: #222;
+  --gray-tertiary: #444;
+  --highlight-light: #e8ff52;
+  --highlight: rgb(252, 232, 159);
+  --highlight-dark: #709900;
+  --error: #ff6053;
+  --success: #2ad544;
+  --gray-gradient: linear-gradient(
+    to bottom right,
+    var(--gray-superlight),
+    var(--gray),
+    var(--gray-light)
+  );
+  --snort-gradient: linear-gradient(
+    to bottom right,
+    var(--highlight-light),
+    var(--highlight),
+    var(--highlight-dark)
+  );
+  --nostrplebs-gradient: linear-gradient(to bottom right, #ff3cac, #2b86c5);
 }
 
-@media (prefers-color-scheme: light) {
+/* @media (prefers-color-scheme: light) {
   :root {
-     --font-color: #000;
-     --bg-color: #FFF;
-     --highlight-light: #FFC852;
-     --highlight: #FF9B00;
-     --highlight-dark: #944F05;
-     --modal-bg-color: rgba(240, 240, 240, 0.8);
-     --gray: #CCC;
-     --gray-secondary: #DDD;
-     --gray-tertiary: #EEE;
-     --gray-superlight: #333;
-     --gray-light: #555;
+    --font-color: #000;
+    --bg-color: #fff;
+    --highlight-light: #ffc852;
+    --highlight: #ff9b00;
+    --highlight-dark: #944f05;
+    --modal-bg-color: rgba(240, 240, 240, 0.8);
+    --gray: #ccc;
+    --gray-secondary: #ddd;
+    --gray-tertiary: #eee;
+    --gray-superlight: #333;
+    --gray-light: #555;
   }
-}
+} */
 
 body {
   margin: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--bg-color);
@@ -47,7 +57,7 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
@@ -66,15 +76,15 @@ code {
 
 .page > .header > div:nth-child(1) {
   font-size: x-large;
-  flex-grow: 1;
+  /* flex-grow: 1; */
 }
 
-.page > .header > div:nth-child(2) {
+.page > .header > .account-header {
   display: flex;
   align-items: center;
 }
 
-.btn { 
+.btn {
   padding: 10px;
   border-radius: 5px;
   cursor: pointer;
@@ -95,7 +105,7 @@ code {
 .btn.active {
   border: 2px solid;
   background-color: var(--gray-secondary);
-  color:  var(--font-color);
+  color: var(--font-color);
   font-weight: bold;
 }
 
@@ -119,7 +129,24 @@ textarea {
   font: inherit;
 }
 
-input[type="text"], input[type="password"], input[type="number"], textarea, select {
+textarea {
+  outline: none;
+  resize: none;
+  border-radius: 10px;
+  max-width: -webkit-fill-available;
+  max-width: -moz-available;
+  max-width: fill-available;
+  min-width: 100%;
+  min-width: -webkit-fill-available;
+  min-width: -moz-available;
+  min-width: fill-available;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"],
+textarea,
+select {
   padding: 10px;
   border-radius: 5px;
   border: 0;
@@ -129,7 +156,7 @@ input[type="text"], input[type="password"], input[type="number"], textarea, sele
 
 input:disabled {
   color: var(--gray-medium);
-  cursor:not-allowed;
+  cursor: not-allowed;
 }
 
 textarea:placeholder {
@@ -144,6 +171,10 @@ textarea:placeholder {
 
 .f-center {
   justify-content: center;
+}
+
+.f-space-between {
+  justify-content: space-between;
 }
 
 .f-1 {
@@ -206,7 +237,7 @@ span.pill {
 
 span.pill.active {
   background-color: var(--gray-tertiary);
-  color:  var(--font-color);
+  color: var(--font-color);
   font-weight: bold;
 }
 
@@ -244,7 +275,7 @@ div.form-group > div:nth-child(2) input {
   height: 100vh;
   top: 0;
   left: 0;
-  background-color: rgba(0,0,0,0.8);
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .modal .modal-content {
@@ -314,37 +345,37 @@ body.scroll-lock {
 }
 
 .root-tabs {
-    padding: 0;
-    align-items: center;
-    justify-content: flex-start;
+  padding: 0;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .root-tab {
-    border-bottom: 3px solid var(--gray-secondary);
+  border-bottom: 3px solid var(--gray-secondary);
 }
 .root-tab.active {
-    border-bottom: 3px solid var(--highlight);
+  border-bottom: 3px solid var(--highlight);
 }
 
 .tweet {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .tweet div {
-    width: 100%;
+  width: 100%;
 }
 
 .tweet div .twitter-tweet {
-    margin: 0 auto;
+  margin: 0 auto;
 }
 
 .tweet div .twitter-tweet > iframe {
-    max-height: unset;
+  max-height: unset;
 }
 
-@media(max-width: 720px) {
+@media (max-width: 720px) {
   .page {
     width: calc(100vw - 20px);
     margin: 0 10px;

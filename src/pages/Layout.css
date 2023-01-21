@@ -13,3 +13,12 @@
   font-weight: bold;
   text-align: center;
 }
+
+.logo {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.logo-image {
+  height: 64px;
+}

@@ -1,33 +1,31 @@
-import './index.css';
+import "./index.css";
 
-import React from 'react';
-import { QueryClient, QueryClientProvider } from 'react-query';
-import ReactDOM from 'react-dom/client';
-import { Provider } from 'react-redux'
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import React from "react";
+import { QueryClient, QueryClientProvider } from "react-query";
+import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import { NostrSystem } from './nostr/System';
-import EventPage from './pages/EventPage';
-import Layout from './pages/Layout';
-import LoginPage from './pages/Login';
-import ProfilePage from './pages/ProfilePage';
-import RootPage from './pages/Root';
+import { NostrSystem } from "./nostr/System";
+import EventPage from "./pages/EventPage";
+import Layout from "./pages/Layout";
+import LoginPage from "./pages/Login";
+import ProfilePage from "./pages/ProfilePage";
+import RootPage from "./pages/Root";
 import Store from "./state/Store";
-import NotificationsPage from './pages/Notifications';
-import NewUserPage from './pages/NewUserPage';
-import SettingsPage from './pages/SettingsPage';
-import ErrorPage from './pages/ErrorPage';
-import VerificationPage from './pages/Verification';
-import MessagesPage from './pages/MessagesPage';
-import ChatPage from './pages/ChatPage';
+import NotificationsPage from "./pages/Notifications";
+import NewUserPage from "./pages/NewUserPage";
+import SettingsPage from "./pages/SettingsPage";
+import ErrorPage from "./pages/ErrorPage";
+import VerificationPage from "./pages/Verification";
+import MessagesPage from "./pages/MessagesPage";
+import ChatPage from "./pages/ChatPage";
+import SubPage from "./pages/SubPage";
 
 /**
  * HTTP query provider
  */
-const HTTP = new QueryClient()
+const HTTP = new QueryClient();
 
 const router = createBrowserRouter([
   {
@@ -36,54 +34,58 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <RootPage />
+        element: <RootPage />,
       },
       {
         path: "/login",
-        element: <LoginPage />
+        element: <LoginPage />,
       },
       {
         path: "/e/:id",
-        element: <EventPage />
+        element: <EventPage />,
       },
       {
         path: "/p/:id",
-        element: <ProfilePage />
+        element: <ProfilePage />,
+      },
+      {
+        path: "/s/:sub",
+        element: <SubPage />,
       },
       {
         path: "/notifications",
-        element: <NotificationsPage />
+        element: <NotificationsPage />,
       },
       {
         path: "/new",
-        element: <NewUserPage />
+        element: <NewUserPage />,
       },
       {
         path: "/settings",
-        element: <SettingsPage />
+        element: <SettingsPage />,
       },
       {
         path: "/verification",
-        element: <VerificationPage />
+        element: <VerificationPage />,
       },
       {
         path: "/messages",
-        element: <MessagesPage />
+        element: <MessagesPage />,
       },
       {
         path: "/messages/:id",
-        element: <ChatPage />
-      }
-    ]
-  }
+        element: <ChatPage />,
+      },
+    ],
+  },
 ]);
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={Store}>
       <QueryClientProvider client={HTTP}>
-         <RouterProvider router={router} />
+        <RouterProvider router={router} />
       </QueryClientProvider>
     </Provider>
   </React.StrictMode>

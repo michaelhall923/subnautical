@@ -1,49 +1,53 @@
 .note-creator {
-    margin-bottom: 10px;
-    background-color: var(--gray);
-    border-radius: 10px;
+  margin-bottom: 10px;
+  /* background-color: var(--gray); */
+  border-radius: 10px;
+  font-size: 18px;
 }
 
 .note-reply {
-    margin: 10px;
+  margin: 10px;
 }
 
 .note-creator textarea {
-    outline: none;
-    resize: none;
-    min-height: 40px;
-    border-radius: 10px 10px 0 0;
-    max-width: -webkit-fill-available;
-    max-width: -moz-available;
-    max-width: fill-available;
-    min-width: 100%;
-    min-width: -webkit-fill-available;
-    min-width: -moz-available;
-    min-width: fill-available;
+  outline: none;
+  resize: none;
+  border-radius: 10px;
+  max-width: -webkit-fill-available;
+  max-width: -moz-available;
+  max-width: fill-available;
+  min-width: 100%;
+  min-width: -webkit-fill-available;
+  min-width: -moz-available;
+  min-width: fill-available;
+}
+
+.note-creator textarea.note {
+  min-height: 40px;
 }
 
 .note-creator .actions {
-    width: 100%;
-    justify-content: flex-end;
-    margin-bottom: 5px;
+  width: 100%;
+  justify-content: flex-end;
+  margin-bottom: 5px;
 }
 
 .note-creator .attachment {
-    cursor: pointer;
-    padding: 5px 10px;
-    border-radius: 10px;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 10px;
 }
 
 .note-creator .attachment .error {
-    font-weight: normal;
-    margin-right: 5px;
-    font-size: 14px;
+  font-weight: normal;
+  margin-right: 5px;
+  font-size: 14px;
 }
 
 .note-creator .btn {
-    border-radius: 20px;
-    font-weight: bold;
-    background-color: var(--gray-secondary);
-    color: var(--gray-superlight);
-    border-color: var(--gray-superlight);
+  border-radius: 20px;
+  font-weight: bold;
+  background-color: var(--gray-secondary);
+  color: var(--gray-superlight);
+  border-color: var(--gray-superlight);
 }
